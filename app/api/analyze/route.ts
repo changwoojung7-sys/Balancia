@@ -182,7 +182,14 @@ export async function POST(req: NextRequest) {
 
                 if (!openaiResponse.ok) {
                     console.error("OpenAI Fallback failed:", openaiData);
-                    return NextResponse.json({ error: "All AI services are currently unavailable." }, { status: 503 });
+                    return NextResponse.json({
+                        error: "AI Service Error (OpenAI)",
+                        details: openaiData,
+                        envCheck: {
+                            hasAccount: !!process.env.CLOUDFLARE_ACCOUNT_ID,
+                            accountStart: process.env.CLOUDFLARE_ACCOUNT_ID ? process.env.CLOUDFLARE_ACCOUNT_ID.substring(0, 4) : 'none'
+                        }
+                    }, { status: openaiResponse.status });
                 }
 
                 const text = openaiData?.choices?.[0]?.message?.content;
