@@ -138,7 +138,8 @@ export async function POST(req: NextRequest) {
 
             if (!geminiResponse.ok) {
                 console.warn("Gemini 2.5 Flash failed, switching to OpenAI...", geminiData);
-                throw new Error("Gemini Error");
+                // Throwing with details so we can see it in logs if needed, though we catch it immediately.
+                throw new Error(`Gemini Error: ${JSON.stringify(geminiData)}`);
             }
 
             const text = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text;
