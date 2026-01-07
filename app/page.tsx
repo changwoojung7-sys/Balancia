@@ -76,6 +76,18 @@ export default function Home() {
               망설임의 순간, Balancia가 데이터와 가치관을 분석하여<br className="md:hidden" /> 최적의 선택지를 제시합니다.
             </p>
           )}
+          {step === "INPUT" && category === "IT_GADGET" && (
+            <p className="text-slate-400 text-lg font-medium animate-fade-in">스마트한 소비를 위한 <span className="text-cyan-400">가전/IT 분석</span></p>
+          )}
+          {step === "INPUT" && category === "CAREER" && (
+            <p className="text-slate-400 text-lg font-medium animate-fade-in">더 나은 미래를 위한 <span className="text-cyan-400">진로/이직 설계</span></p>
+          )}
+          {step === "INPUT" && category === "TRAVEL" && (
+            <p className="text-slate-400 text-lg font-medium animate-fade-in">설렘 가득한 <span className="text-cyan-400">맞춤형 여행지 추천</span></p>
+          )}
+          {step === "INPUT" && category === "LIFE" && (
+            <p className="text-slate-400 text-lg font-medium animate-fade-in">따뜻하고 명쾌한 <span className="text-purple-400">인생 고민 상담</span></p>
+          )}
         </header>
 
         {/* Step 1: Category Selection */}
